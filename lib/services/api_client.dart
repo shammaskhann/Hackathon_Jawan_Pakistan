@@ -73,15 +73,20 @@ class ApiClient {
   }
 
   Future<void> putNewTask(String id, Tasks task) async {
+    log(id);
+    log("new task add process");
     final response = await http.put(
       Uri.parse('$baseUrl/user/$id/tasks'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: jsonEncode(task.toJson()),
+      // Wrap task.toJson() in an array
+      body: jsonEncode([task.toJson()]),
     );
-
     if (response.statusCode != 200) {
+      log("new task add process failed");
+      log('Response status: ${response.statusCode}');
+      log('Response body: ${response.body}');
       throw Exception('Failed to add task');
     }
   }

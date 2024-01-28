@@ -7,6 +7,7 @@ import 'package:hackathon2/utils/shared_pref.dart';
 
 import '../../models/user_model.dart';
 import '../../resources/Routes/route_name.dart';
+import '../../utils/utils.dart';
 
 class SignInController extends GetxController {
   final emailController = TextEditingController();
@@ -33,6 +34,7 @@ class SignInController extends GetxController {
       }
 
       if (matchedUser != null) {
+        Utils.toastMessage("Login Successful");
         log('Matched User ID: ${matchedUser!.sId}');
         await SharedPref.storeValue('id', '${matchedUser!.sId}');
         Get.offAllNamed(RouteName.dashboard);

@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:hackathon2/resources/Images/images.dart';
 import 'package:hackathon2/resources/Routes/route_name.dart';
 
+import '../../utils/shared_pref.dart';
+
 class OnBoardController extends GetxController {
   List Page = [
     {
@@ -22,6 +24,7 @@ class OnBoardController extends GetxController {
   ];
   var currentIndex = 0.obs;
   var pageController = PageController();
+  RxBool isLoading = false.obs;
   @override
   void onInit() {
     super.onInit();
@@ -31,7 +34,16 @@ class OnBoardController extends GetxController {
     });
   }
 
-  void navToSignIn() {
-    Get.offAllNamed(RouteName.signIn);
+  void navToSignIn() async {
+    isLoading(true);
+    String? id = await SharedPref.readValue('id');
+    if (id != null) {
+      isLoading(false);
+      Get.offAllNamed(RouteName.dashboard);
+    } else {
+      isLoading(false);
+      Get.offAllNamed(RouteName.signIn);
+    }
+    isLoading(false);
   }
 }
