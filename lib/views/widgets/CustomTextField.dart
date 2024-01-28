@@ -48,14 +48,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
           fontSize: 16,
         ),
         enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(color: AppColors.grey),
         ),
         disabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.grey),
         ),
         focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(20)),
+          borderRadius: BorderRadius.all(Radius.circular(15)),
           borderSide: BorderSide(color: AppColors.primary),
         ),
         suffixIcon: widget.isPassword

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon2/resources/Icons/icons.dart';
+import 'package:hackathon2/views/Task/addTask_view.dart';
 import 'package:hackathon2/views/chats/chat_view.dart';
 import 'package:hackathon2/views/home/home_view.dart';
 import 'package:hackathon2/views/profile/profile_view.dart';
@@ -26,7 +27,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   static const Screens = [
     HomeView(),
     ProjectView(),
-    Text("ADD TASK"),
+    AddTaskView(),
     ChatView(),
     ProfileView(),
   ];
@@ -34,61 +35,59 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Screens.elementAt(_currentIndex),
-        ],
+      body: Screens.elementAt(_currentIndex),
+      bottomNavigationBar: Container(
+        height: 80.0, // Adjust the height as needed
+        color: Colors.black, // Set background color to black
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            _buildNavItem(0, AppIcons.home),
+            _buildNavItem(1, AppIcons.folder),
+            _buildAddButton(),
+            _buildNavItem(3, AppIcons.chat),
+            _buildNavItem(4, AppIcons.hrofile),
+          ],
+        ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: 56.0, // same as FloatingActionButton default size
-        width: 56.0, // same as FloatingActionButton default size
-        decoration: const BoxDecoration(
-          color: AppColors.primary,
+      backgroundColor: AppColors.secondary,
+    );
+  }
+
+  Widget _buildNavItem(int index, String iconPath) {
+    return GestureDetector(
+      onTap: () {
+        _onItemTapped(index);
+      },
+      child: Container(
+        width: 56.0,
+        height: 56.0,
+        child: Image.asset(
+          iconPath,
+          color: (_currentIndex == index) ? AppColors.primary : AppColors.grey,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAddButton() {
+    return GestureDetector(
+      onTap: () {
+        _onItemTapped(2);
+      },
+      child: Container(
+        width: 56.0,
+        height: 56.0,
+        decoration: BoxDecoration(
           shape: BoxShape.circle,
+          color: AppColors.primary,
         ),
         child: Center(
-          child: Image.asset(AppIcons.add,
-              color: (_currentIndex == 2) ? AppColors.white : AppColors.white),
+          child: Image.asset(
+            AppIcons.add,
+            color: (_currentIndex == 2) ? AppColors.white : AppColors.white,
+          ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Image.asset(AppIcons.home,
-                color:
-                    (_currentIndex == 0) ? AppColors.primary : AppColors.grey),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: Image.asset(AppIcons.folder,
-                  color: (_currentIndex == 1)
-                      ? AppColors.primary
-                      : AppColors.grey),
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(AppIcons.chat,
-                color:
-                    (_currentIndex == 3) ? AppColors.primary : AppColors.grey),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset(AppIcons.hrofile,
-                color:
-                    (_currentIndex == 4) ? AppColors.primary : AppColors.grey),
-            label: '',
-          ),
-        ],
-        currentIndex: _currentIndex,
-        backgroundColor: AppColors.secondary,
-        // selectedItemColor: AppColors.primary,
-        onTap: _onItemTapped,
-        showSelectedLabels: false, // Add this
-        showUnselectedLabels: false, // Add this
       ),
     );
   }

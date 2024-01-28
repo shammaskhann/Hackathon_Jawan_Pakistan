@@ -7,7 +7,7 @@ import 'package:hackathon2/views/splash/splash_view.dart';
 
 import 'resources/Colors/colors.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
