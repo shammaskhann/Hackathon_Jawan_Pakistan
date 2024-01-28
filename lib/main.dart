@@ -21,9 +21,14 @@ class MyApp extends StatelessWidget {
       getPages: AppRoutes.appRoute(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: AppColors.primary,
         appBarTheme: const AppBarTheme(
           toolbarHeight: 80, // Set the toolbarHeight here
           centerTitle: true,
+          titleTextStyle: TextStyle(
+              color: AppColors.white,
+              fontSize: 24,
+              fontWeight: FontWeight.bold),
           color: AppColors.secondary,
           iconTheme: IconThemeData(color: AppColors.white),
         ),

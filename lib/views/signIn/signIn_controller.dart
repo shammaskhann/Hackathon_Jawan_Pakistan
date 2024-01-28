@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,7 +10,15 @@ class SignInController extends GetxController {
   final passwordController = TextEditingController();
   final isLoading = false.obs;
 
-  navToSignUp() {
+  void navToSignUp() {
     Get.toNamed(RouteName.signUp);
+  }
+
+  void signIn() {
+    Get.offAllNamed(RouteName.dashboard);
+  }
+
+  void forgetPassword() {
+    log("Password");
   }
 }

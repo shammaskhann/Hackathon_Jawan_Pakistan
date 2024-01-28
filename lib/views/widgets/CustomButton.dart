@@ -4,7 +4,14 @@ import 'package:get/get.dart';
 class CustomButton extends StatelessWidget {
   final String title;
   final Function onPressed;
-  const CustomButton({required this.title, required this.onPressed, super.key});
+  final bool isLoading;
+
+  const CustomButton({
+    required this.title,
+    required this.onPressed,
+    this.isLoading = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +34,15 @@ class CustomButton extends StatelessWidget {
           ],
         ),
         child: Center(
-          child: Text(
-            title,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
+          child: isLoading
+              ? CircularProgressIndicator(color: Colors.white)
+              : Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
         ),
       ),
     );

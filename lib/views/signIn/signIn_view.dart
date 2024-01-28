@@ -16,7 +16,7 @@ class SignInView extends StatelessWidget {
     SignInController signInController = Get.put(SignInController());
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign In"),
+        title: const Text("Sign In", style: TextStyle(color: AppColors.white)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10.0),
@@ -63,7 +63,9 @@ class SignInView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          signInController.forgetPassword();
+                        },
                         child: const Text(
                           "Forgot Password?",
                           style:
@@ -71,7 +73,11 @@ class SignInView extends StatelessWidget {
                         ))
                   ],
                 ),
-                CustomButton(title: "Sign In", onPressed: () {}),
+                CustomButton(
+                    title: "Sign In",
+                    onPressed: () {
+                      signInController.signIn();
+                    }),
                 const SizedBox(
                   height: 20,
                 ),

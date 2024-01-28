@@ -5,6 +5,7 @@ class RouteName {
   static const String onBoard = '/onBoard';
   static const String signIn = '/signIn';
   static const String signUp = '/signUp';
+  static const String dashboard = '/dashboard';
   static const String home = '/home';
   static const String todayTask = '/todayTask';
   static const String monthlyTask = '/monthlyTask';

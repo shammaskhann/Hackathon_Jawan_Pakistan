@@ -76,11 +76,14 @@ class ArtBoard extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   const Spacer(),
-                  CustomButton(
-                      title: "Get Started",
-                      onPressed: () {
-                        Get.offAllNamed(RouteName.onBoard);
-                      }),
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: CustomButton(
+                        title: "Get Started",
+                        onPressed: () {
+                          Get.offAllNamed(RouteName.onBoard);
+                        }),
+                  ),
                   const SizedBox(
                     height: 30,
                   ),

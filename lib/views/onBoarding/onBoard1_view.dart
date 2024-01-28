@@ -51,7 +51,7 @@ class OnBoardView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SvgPicture.asset(
+                  Image.asset(
                     onBoardController.Page[index]['image'],
                     height: Get.height * 0.6,
                     width: Get.width,
