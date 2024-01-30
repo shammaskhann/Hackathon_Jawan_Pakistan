@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:hackathon2/resources/Colors/colors.dart';
 
 import '../../resources/Images/images.dart';
+import '../../resources/Routes/route_name.dart';
+import '../../utils/shared_pref.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -35,6 +38,13 @@ class ProfileView extends StatelessWidget {
                   color: AppColors.white,
                   fontSize: 24,
                   fontWeight: FontWeight.bold)),
+          TextButton(
+            onPressed: () {
+              SharedPref.storeValue('id', '');
+              Get.offAllNamed(RouteName.signIn);
+            },
+            child: Text("Logout"),
+          )
         ],
       ),
       backgroundColor: AppColors.secondary,

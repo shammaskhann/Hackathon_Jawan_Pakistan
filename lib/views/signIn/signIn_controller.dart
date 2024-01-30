@@ -40,6 +40,7 @@ class SignInController extends GetxController {
         Get.offAllNamed(RouteName.dashboard);
         // Store matchedUser.id in a secure place
       } else {
+        Utils.toastMessage("Error Occured");
         log('No user found with the provided email and password');
       }
     } catch (e) {
