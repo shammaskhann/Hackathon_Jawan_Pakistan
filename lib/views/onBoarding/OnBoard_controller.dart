@@ -37,8 +37,12 @@ class OnBoardController extends GetxController {
   void navToSignIn() async {
     isLoading(true);
     String? id = await SharedPref.readValue('id');
-
-    Get.offAllNamed(RouteName.signIn);
+    if (id != '') {
+      Get.offAllNamed(RouteName.home);
+    } else {
+      Get.offAllNamed(RouteName.signIn);
+    }
+    // Get.offAllNamed(RouteName.signIn);
     isLoading(false);
   }
 }
